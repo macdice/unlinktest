@@ -1,0 +1,14 @@
+This program appears to show that Apple macOS 10.14 has a non-atomic unlink(2)
+syscall; concurrent threads can see the file in a weird state during
+unlinking.
+
+On FreeBSD and Linux, the program prints out nothing: the 'reader' thread
+either sees the file as not existing, or existing and containing exactly 11
+bytes (= the unlink was atomic).
+
+On macOS, it prints out a few messages indicating that it saw an intermediate
+state where the file existed but was empty.  Is that a bug?
+
+As discussed at:
+
+https://www.postgresql.org/message-id/flat/CAEepm%3D31MzQvAyCT%3DLHk4ZiiNMEn%3Dmnh179DNapavj0ZVcnt7w%40mail.gmail.com
