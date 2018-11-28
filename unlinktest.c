@@ -3,6 +3,7 @@
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/errno.h>
 #include <unistd.h>
 
 struct state_t
@@ -70,6 +71,8 @@ void *reader_function(void *data)
 					printf("read %d bytes, unexpected\n", rc);
 				rc = close(fd);
 				assert(rc == 0);
+			} else {
+				assert(errno == ENOENT);
 			}
 			rc = pthread_mutex_lock(&state->mutex);
 			assert(rc == 0);
