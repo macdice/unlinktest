@@ -12,3 +12,5 @@ state where the file existed but was empty.  Is that a bug?
 As discussed at:
 
 https://www.postgresql.org/message-id/flat/CAEepm%3D31MzQvAyCT%3DLHk4ZiiNMEn%3Dmnh179DNapavj0ZVcnt7w%40mail.gmail.com
+
+Update November 2020: This seems to be fixed in Big Sur.  Thanks Apple!
